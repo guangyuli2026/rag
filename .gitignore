@@ -1,0 +1,26 @@
+# Python and virtual environments
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+
+# Local configuration and secrets
+.env
+.env.*
+!.env.example
+
+# Generated RAG artifacts
+data/index/
+data/private/
+*.faiss
+*.npy
+*.npz
+*.sqlite3
+reports/
+
+# Editors and OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
