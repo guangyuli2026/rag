@@ -1,0 +1,23 @@
+Campus Weather Notes (fictional sample)
+
+> This file is a fictional sample for the RAG learning project only. It does not describe any real place or policy.
+
+## Spring
+
+Spring on campus is warm and windy. Students usually wear a light jacket from March to May. The cherry trees near the library bloom in early April, which is the most popular photo spot.
+
+## Summer
+
+Summer is hot and humid. The swimming pool opens from June to September. Classrooms are air-conditioned, so bring a thin sweater even in July.
+
+## Autumn
+
+Autumn is the most comfortable season. The temperature stays between 15 and 25 degrees from September to November. Many students choose this season for outdoor sports and weekend trips.
+
+## Winter
+
+Winter is dry and cold, with occasional snow in January. The heating system starts in mid-November. Wearing layers is the best strategy against the cold.
+
+## General advice
+
+Always check the daily forecast before planning outdoor activities. Rain can come suddenly in spring, so an umbrella is a good companion all year round.

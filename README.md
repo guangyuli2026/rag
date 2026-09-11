@@ -30,6 +30,20 @@ python -m venv .venv
 
 演示会明确显示当前尚未接入模型。后续步骤会在此入口之外增加文档导入、检索和回答模块。
 
+## 文档检索命令
+
+```powershell
+.\.venv\Scripts\rag-demo.exe docs              # 列出已加载的示例文档
+.\.venv\Scripts\rag-demo.exe chunks            # 查看切分结果（片段 id、原文位置）
+.\.venv\Scripts\rag-demo.exe chunks --doc doc_003 --limit 10   # 只看某份文档的片段
+.\.venv\Scripts\rag-demo.exe search "浇水"      # 关键词检索，返回 Top-3 片段和来源
+.\.venv\Scripts\rag-demo.exe search "徒步 装备" -k 5   # 指定返回前几个片段
+```
+
+当前检索是**简单关键词基线**：按字面匹配计分（大小写不敏感），同义词查不到；
+片段保留原文字符区间（char_start–char_end），可用 `content[start:end]` 定位回原文。
+切分参数（chunk_size、overlap）在 `src/rag_assistant/chunking.py` 中可配置。
+
 ## 运行测试
 
 ```powershell
