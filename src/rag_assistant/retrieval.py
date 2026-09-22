@@ -20,10 +20,10 @@ from dataclasses import dataclass
 
 from .chunking import Chunk
 
-# 关键词分隔符：空白 + 常见中英文标点。
-# 用 re.escape 逐字转义后拼接，避免手写字符类时 `[]`、`-` 等字符的歧义解析。
+# 正则表达式，关键词分隔符：空白 + 常见中英文标点。
+# 用 re.escape 反斜杠转义后拼接
 _SEPARATORS = "，。！？、；：\"\"''（）《》〈〉、,.!?;:()[]{}<>/|\\—…·-"
-_KEYWORD_SPLIT = re.compile(r"[\s" + re.escape(_SEPARATORS) + r"]+")
+_KEYWORD_SPLIT = re.compile(r"[\s" + re.escape(_SEPARATORS) + r"]+")#预编译正则对象re
 
 
 @dataclass(frozen=True)
@@ -36,7 +36,7 @@ class Hit:
 
 def split_keywords(query: str) -> list[str]:
     """把查询切成关键词列表。中文连续文本整体保留为一个关键词。"""
-    return [word for word in _KEYWORD_SPLIT.split(query) if word]
+    return [word for word in _KEYWORD_SPLIT.split(query) if word]#re 对象.split (字符串) = 按正则表达式匹配到的位置切开
 
 
 def score_chunk(text: str, keywords: list[str]) -> int:

@@ -1,0 +1,62 @@
+[
+  {
+    "question": "绿萝应该多久浇一次水？",
+    "category": "精确事实",
+    "review_status": "pending_human_review",
+    "evidence": [{"path": "办公室植物养护指南.md", "quote": "它耐阴、耐旱，对温度变化不敏感，一周浇一次水即可。"}]
+  },
+  {
+    "question": "办公室绿植补充水分时要注意什么？",
+    "category": "同义表达",
+    "review_status": "pending_human_review",
+    "evidence": [{"path": "办公室植物养护指南.md", "quote": "办公室植物养护的第一原则是\"少浇水，多观察\"。"}]
+  },
+  {
+    "question": "登山杖",
+    "category": "精确术语",
+    "review_status": "pending_human_review",
+    "evidence": [{"path": "周末徒步计划.md", "quote": "登山杖能明显减轻膝盖压力，特别是下坡路段。"}]
+  },
+  {
+    "question": "散射光",
+    "category": "精确术语",
+    "review_status": "pending_human_review",
+    "evidence": [{"path": "办公室植物养护指南.md", "quote": "多肉植物和仙人掌则需要充足的散射光，最好放在朝南的窗台上。"}]
+  },
+  {
+    "question": "RAG-101",
+    "category": "精确编号",
+    "review_status": "pending_human_review",
+    "evidence": [{"path": "检索练习编号说明.md", "quote": "RAG-101：资料新增、修改或删除后，应重新建立本地索引。"}]
+  },
+  {
+    "question": "RAG-102",
+    "category": "精确编号",
+    "review_status": "pending_human_review",
+    "evidence": [{"path": "检索练习编号说明.md", "quote": "RAG-102：查询向量和文档向量必须使用兼容的模型及输入配置。"}]
+  },
+  {
+    "question": "远足下坡时用什么装备保护关节？",
+    "category": "同义表达",
+    "review_status": "pending_human_review",
+    "evidence": [{"path": "周末徒步计划.md", "quote": "登山杖能明显减轻膝盖压力，特别是下坡路段。"}]
+  },
+  {
+    "question": "校园游泳池夏季什么时候开放？",
+    "category": "跨语言表达",
+    "review_status": "pending_human_review",
+    "evidence": [{"path": "campus_weather_notes.txt", "quote": "The swimming pool opens from June to September."}]
+  },
+  {
+    "question": "15 25",
+    "category": "精确数字",
+    "review_status": "pending_human_review",
+    "evidence": [{"path": "campus_weather_notes.txt", "quote": "The temperature stays between 15 and 25 degrees from September to November."}]
+  },
+  {
+    "question": "校园附近有地铁线路吗？",
+    "category": "无答案",
+    "review_status": "pending_human_review",
+    "evidence": []
+  }
+]

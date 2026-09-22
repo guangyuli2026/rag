@@ -14,6 +14,7 @@ from __future__ import annotations
 
 import re
 from dataclasses import dataclass
+from .config import DEFAULT_CHUNKING_CONFIG
 
 # 连续两个以上换行（中间允许空格/制表符）视为段落分隔
 _PARAGRAPH_SPLIT = re.compile(r"\n[ \t]*\n")
@@ -37,6 +38,7 @@ class Chunk:
     text: str
     char_start: int
     char_end: int
+    relative_path: str = ""
 
 
 def _split_paragraphs(text: str) -> list[tuple[int, str]]:
@@ -101,13 +103,13 @@ def _basic_blocks(text: str, chunk_size: int) -> list[tuple[str, int, int]]:
 
 def chunk_text(
     text: str,
-    chunk_size: int = 500,
-    overlap: int = 50,
+    chunk_size: int = DEFAULT_CHUNKING_CONFIG.chunk_size,
+    overlap: int = DEFAULT_CHUNKING_CONFIG.overlap,
 ) -> list[tuple[str, int, int]]:
     """把一段原文切成带偏移的块，返回 [(文本, char_start, char_end)]。
 
     参数：
-      chunk_size  块的最大字符数（不是 token 数，见下文说明）
+      chunk_size  基础块的最大字符数；补重叠后最多 chunk_size + overlap（不是 token 数）
       overlap     相邻块之间重叠的字符数；0 表示不重叠
     """
     if not text:
@@ -129,7 +131,13 @@ def chunk_text(
     return blocks
 
 
-def chunk_document(doc_id: str, title: str, content: str, **kwargs) -> list[Chunk]:
+def chunk_document(
+    doc_id: str,
+    title: str,
+    content: str,
+    relative_path: str = "",
+    **kwargs,
+) -> list[Chunk]:
     """把一份文档切成 Chunk 列表，编号从 0 开始。"""
     return [
         Chunk(
@@ -139,6 +147,7 @@ def chunk_document(doc_id: str, title: str, content: str, **kwargs) -> list[Chun
             text=text,
             char_start=start,
             char_end=end,
+            relative_path=relative_path,
         )
         for index, (text, start, end) in enumerate(chunk_text(content, **kwargs))
     ]
@@ -146,8 +155,8 @@ def chunk_document(doc_id: str, title: str, content: str, **kwargs) -> list[Chun
 
 def chunk_documents(
     documents: list,
-    chunk_size: int = 500,
-    overlap: int = 50,
+    chunk_size: int = DEFAULT_CHUNKING_CONFIG.chunk_size,
+    overlap: int = DEFAULT_CHUNKING_CONFIG.overlap,
 ) -> list[Chunk]:
     """把多份文档全部切成片段。重复文档已在加载层去重，这里直接顺序切分。"""
     chunks: list[Chunk] = []
@@ -157,6 +166,7 @@ def chunk_documents(
                 doc.doc_id,
                 doc.title,
                 doc.content,
+                relative_path=getattr(doc, "relative_path", ""),
                 chunk_size=chunk_size,
                 overlap=overlap,
             )
